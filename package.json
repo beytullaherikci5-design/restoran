@@ -1,0 +1,11 @@
+{
+  "name": "yemek-siparis-sistemi",
+  "version": "1.0.0",
+  "description": "Lokanta yemek sipariş sistemi",
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "mongodb": "^6.3.0"
+  }
+}
