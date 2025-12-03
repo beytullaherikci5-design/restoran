@@ -51,16 +51,28 @@ async function createOrder() {
         return;
     }
     
-    const order = {
-        id: Date.now(),
-        items: [...cart],
-        total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
-        time: new Date().toLocaleTimeString('tr-TR')
-    };
+    const orderBtn = document.getElementById('order-btn');
+    orderBtn.textContent = 'Sipariş Veriliyor...';
+    orderBtn.disabled = true;
     
-    await createOrderAPI(order);
-    cart = [];
-    saveToDatabase('cart', cart);
-    updateCartDisplay();
-    alert('Sipariş başarıyla oluşturuldu!');
+    try {
+        const order = {
+            id: Date.now(),
+            items: [...cart],
+            total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+            time: new Date().toLocaleTimeString('tr-TR')
+        };
+        
+        await createOrderAPI(order);
+        cart = [];
+        saveToDatabase('cart', cart);
+        updateCartDisplay();
+        alert('Sipariş başarıyla oluşturuldu!');
+    } catch (error) {
+        console.error('Sipariş hatası:', error);
+        alert('Sipariş verilirken hata oluştu. Lütfen tekrar deneyin.');
+    } finally {
+        orderBtn.textContent = 'Sipariş Ver';
+        orderBtn.disabled = false;
+    }
 }

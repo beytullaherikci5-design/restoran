@@ -208,3 +208,34 @@ button:active {
 .login-form button:last-child {
     background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
 }
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #667eea;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.no-orders {
+    text-align: center;
+    padding: 40px;
+    color: #718096;
+    font-size: 1.1em;
+}
+
+.error {
+    text-align: center;
+    padding: 40px;
+    color: #e53e3e;
+    font-size: 1.1em;
+    background: rgba(229, 62, 62, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(229, 62, 62, 0.3);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
